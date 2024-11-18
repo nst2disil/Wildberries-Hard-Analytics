@@ -1,7 +1,8 @@
+-- тип данных в столбцах date_reg и date - date
 select
     seller_id,
     -- количество месяцев между текущей датой и минимальной датой регистрации продавца
-    (current_date - min(to_date(date_reg, 'DD/MM/YYYY'))) / 30 as month_from_registration,
+    (current_date - min(date_reg)) / 30 as month_from_registration,
     -- разница между максимальным и минимальным сроком доставки среди всех poor продавцов, не считая категории Bedding
     (select max(delivery_days) - min(delivery_days) from (
     		-- сроки доставки всех poor продавцов, не считая категории Bedding
